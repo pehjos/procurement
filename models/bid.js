@@ -12,6 +12,7 @@ const postSchema = mongoose.Schema({
      title: String,
      description: String,
  start_date: String,
+status: String,
       contact: String,
   complete_date: String,
      category: String,

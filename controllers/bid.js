@@ -50,6 +50,7 @@ export const createPost = async (req, res) => {
        complete_date,
           category,
           user_id,
+          status,
           hrs_week,
         total_workers,
      } = req.body;
@@ -60,6 +61,7 @@ export const createPost = async (req, res) => {
         project_title,
         project_description,
         project_agency, 
+        status,
         name,
         expected_payment,
           title,
@@ -81,13 +83,45 @@ export const createPost = async (req, res) => {
 }
 
 
-export const updatePost = async (req, res) => {
+export const updateCart = async (req, res) => {
     const { id } = req.params;
-    const { title, message, creator, selectedFile, tags } = req.body;
+    const { 
+        user_id,
+        project_id,
+        project_title,
+        project_description,
+        project_agency, 
+        status,
+        name,
+        expected_payment,
+          title,
+          description,
+      start_date,
+           contact,
+       complete_date,
+          category,
+          hrs_week,
+        total_workers,} = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+    const updatedPost = {
+        user_id,
+        project_id,
+        project_title,
+        project_description,
+        project_agency, 
+        status,
+        name,
+        expected_payment,
+          title,
+          description,
+      start_date,
+           contact,
+       complete_date,
+          category,
+          hrs_week,
+        total_workers, _id: id };
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
@@ -103,6 +137,7 @@ export const deletePost = async (req, res) => {
 
     res.json({ message: "Post deleted successfully." });
 }
+
 
 
 
