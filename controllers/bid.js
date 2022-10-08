@@ -53,25 +53,44 @@ export const createPost = async (req, res) => {
           status,
           hrs_week,
         total_workers,
+     nationality,
+     adress,
+     district,
+     region,
+     cv,
+
+
+
+
+
+
      } = req.body;
 
     const newPostMessage = new PostMessage({ 
-        user_id,
         project_id,
         project_title,
         project_description,
-        project_agency, 
-        status,
-        name,
-        expected_payment,
-          title,
-          description,
-      start_date,
-           contact,
-       complete_date,
-          category,
-          hrs_week,
-        total_workers,})
+        project_agency,
+              name,
+              expected_payment,
+                title,
+                description,
+            start_date,
+                 contact,
+             complete_date,
+                category,
+                user_id,
+                status,
+                hrs_week,
+              total_workers,
+           nationality,
+           adress,
+           district,
+           region,
+           cv,
+      
+      
+      })
 
     try {
         await newPostMessage.save();
